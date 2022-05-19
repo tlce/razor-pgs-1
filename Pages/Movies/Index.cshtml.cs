@@ -7,21 +7,17 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using RazorPgs1.Models;
 
-namespace RazorPgs1.Pages_Movies
-{
-    public class IndexModel : PageModel
-    {
+namespace RazorPgs1.Pages_Movies {
+    public class IndexModel : PageModel {
         private readonly RazorPagesMovieContext _context;
 
-        public IndexModel(RazorPagesMovieContext context)
-        {
+        public IndexModel(RazorPagesMovieContext context) {
             _context = context;
         }
 
-        public IList<Movie> Movie { get;set; }
+        public IList<Movie> Movie { get; set; }
 
-        public async Task OnGetAsync()
-        {
+        public async Task OnGetAsync() {
             Movie = await _context.Movie.ToListAsync();
         }
     }
