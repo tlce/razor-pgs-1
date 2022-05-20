@@ -7,30 +7,24 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using RazorPgs1.Models;
 
-namespace RazorPgs1.Pages_Movies
-{
-    public class DetailsModel : PageModel
-    {
+namespace RazorPgs1.Pages_Movies {
+    public class DetailsModel : PageModel {
         private readonly RazorPagesMovieContext _context;
 
-        public DetailsModel(RazorPagesMovieContext context)
-        {
+        public DetailsModel(RazorPagesMovieContext context) {
             _context = context;
         }
 
         public Movie Movie { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
-        {
-            if (id == null)
-            {
+        public async Task<IActionResult> OnGetAsync(int? id) {
+            if (id == null) {
                 return NotFound();
             }
 
             Movie = await _context.Movie.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Movie == null)
-            {
+            if (Movie == null) {
                 return NotFound();
             }
             return Page();
